@@ -10,20 +10,51 @@ A full-featured notes-taking web application built with:
 ## 📁 Project Structure
 
 ```
-notes_app/
+# ✦ NoteFlow — Django + MySQL Notes App
+
+A full-featured notes-taking web application built to help you capture and organise your thoughts easily. 
+
+**Author:** Soham Santosh Deshpande
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** Plain HTML, CSS, Vanilla JavaScript
+- **Backend:** Django (Python 3.10+)
+- **Database:** MySQL 8.0+
+
+---
+
+## 🌟 Features
+
+| Feature | Description |
+|---|---|
+| **🔐 User Authentication** | Secure register, login, and logout. Users can only see their own notes. |
+| **📝 Create Notes** | Add a title, write your thoughts, pick a category, and pin it to the top. |
+| **✏️ Edit Notes** | Change any note at any time. |
+| **🗑️ Delete Notes** | Shows a warning screen first to stop accidental deletes. |
+| **📌 Pin Notes (AJAX)** | Pin important notes to the top instantly without reloading the page. |
+| **🏷️ Categories** | Organise notes by Personal, Work, Ideas, To-Do, or Other. |
+| **🔍 Smart Search** | Fast search that waits until you stop typing (debounced) and keeps your typing cursor in place. |
+| **🔽 Filter** | Easily filter notes by picking a category from the dropdown. |
+| **📊 Quick Stats** | See your total notes and pinned count right at the top. |
+
+---
+
+## 📁 Project Structure
+
+```text
+Noteflow/                
 ├── requirements.txt
 ├── setup_mysql.sql
 ├── README.md
-└── notes_project/
+└── src/
     ├── manage.py
     ├── notes_project/
-    │   ├── __init__.py
     │   ├── settings.py
     │   ├── urls.py
     │   └── wsgi.py
     └── notes_app/
-        ├── __init__.py
-        ├── apps.py
         ├── models.py
         ├── views.py
         ├── forms.py
@@ -97,7 +128,7 @@ pip install -r requirements.txt
 > ```bash
 > pip install mysqlclient --only-binary=mysqlclient
 > ```
-> Or install MySQL Connector as alternative:
+> Or install MySQL Connector as an alternative:
 > ```bash
 > pip install mysql-connector-python
 > ```
