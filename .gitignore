@@ -1,11 +1,15 @@
-# Virtual Environments
+# Virtual Environments (Ignore the heavy folder we saw in your GitHub)
 Venv/
 venv/
 env/
 
-# Python Cache
+# Python Cache (Temporary files created when you run the app)
 __pycache__/
 *.pyc
 
 # Local Database
 *.sqlite3
+
+# OS generated files
+.DS_Store
+Thumbs.db

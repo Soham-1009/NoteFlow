@@ -1,15 +1,13 @@
 {% extends 'notes_app/base.html' %}
-{% block title %}Login — NoteFlow{% endblock %}
+{% block title %}Login &mdash; NoteFlow{% endblock %}
 
 {% block content %}
 <div class="auth-wrap">
     <div class="auth-card">
-        <div class="auth-logo">✦ NoteFlow</div>
+        <div class="auth-logo">&star; NoteFlow</div>
         <p class="auth-subtitle">Your thoughts, beautifully organized</p>
 
         <form method="post">
-            {% csrf_token %}
-            <form method="post">
             {% csrf_token %}
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">

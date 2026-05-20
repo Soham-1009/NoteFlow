@@ -1,10 +1,10 @@
 {% extends 'notes_app/base.html' %}
-{% block title %}{{ note.title }} — NoteFlow{% endblock %}
+{% block title %}{{ note.title }} &mdash; NoteFlow{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="page-header">
-        <a href="{% url 'home' %}" class="btn btn-ghost">← Back to Notes</a>
+        <a href="{% url 'home' %}" class="btn btn-ghost">&larr; Back to Notes</a>
     </div>
 
     <div class="note-detail">
@@ -12,16 +12,16 @@
 
         <div class="note-detail-meta">
             <span class="badge badge-{{ note.category }}">{{ note.get_category_display }}</span>
-            {% if note.is_pinned %}<span style="color:var(--accent);">📌 Pinned</span>{% endif %}
+            {% if note.is_pinned %}<span style="color:var(--accent);">Pinned</span>{% endif %}
             <span>Created {{ note.created_at|date:"F d, Y" }}</span>
-            <span>Updated {{ note.updated_at|date:"F d, Y · g:i A" }}</span>
+            <span>Updated {{ note.updated_at|date:"F d, Y, g:i A" }}</span>
         </div>
 
         <div class="note-detail-content">{{ note.content }}</div>
 
         <div class="detail-actions">
-            <a href="{% url 'edit_note' note.pk %}" class="btn btn-primary">✏ Edit Note</a>
-            <a href="{% url 'delete_note' note.pk %}" class="btn btn-danger">🗑 Delete</a>
+            <a href="{% url 'edit_note' note.pk %}" class="btn btn-primary">Edit Note</a>
+            <a href="{% url 'delete_note' note.pk %}" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>

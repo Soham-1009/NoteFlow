@@ -1,10 +1,8 @@
 {% extends 'notes_app/base.html' %}
-{% block title %}My Notes — NoteFlow{% endblock %}
+{% block title %}My Notes &mdash; NoteFlow{% endblock %}
 
 {% block content %}
 <div class="container">
-
-    <!-- Stats -->
     <div class="stats-bar">
         <div class="stat-item">
             <div class="stat-value">{{ total_notes }}</div>
@@ -20,11 +18,10 @@
         </div>
     </div>
 
-    <!-- Toolbar -->
     <form method="get" id="filterForm">
         <div class="toolbar">
             <div class="search-wrap">
-                <span class="icon">🔍</span>
+                <span class="icon">Search</span>
                 <input
                     type="text"
                     name="q"
@@ -41,12 +38,11 @@
                 {% endfor %}
             </select>
             {% if query or selected_category %}
-            <a href="{% url 'home' %}" class="btn btn-ghost btn-sm">✕ Clear</a>
+            <a href="{% url 'home' %}" class="btn btn-ghost btn-sm">Clear</a>
             {% endif %}
         </div>
     </form>
 
-    <!-- Notes Grid -->
     {% if notes %}
     <div class="notes-grid">
         {% for note in notes %}
@@ -57,7 +53,7 @@
                     class="pin-btn {% if note.is_pinned %}active{% endif %}"
                     onclick="togglePin({{ note.pk }}, this)"
                     title="{% if note.is_pinned %}Unpin{% else %}Pin{% endif %}"
-                >📌</button>
+                >Pin</button>
             </div>
 
             <p class="note-content-preview">{{ note.content }}</p>
@@ -68,8 +64,8 @@
             </div>
 
             <div class="note-actions">
-                <a href="{% url 'edit_note' note.pk %}" class="btn btn-ghost btn-sm">✏ Edit</a>
-                <a href="{% url 'delete_note' note.pk %}" class="btn btn-danger btn-sm">🗑 Delete</a>
+                <a href="{% url 'edit_note' note.pk %}" class="btn btn-ghost btn-sm">Edit</a>
+                <a href="{% url 'delete_note' note.pk %}" class="btn btn-danger btn-sm">Delete</a>
             </div>
         </div>
         {% endfor %}
@@ -77,7 +73,7 @@
 
     {% else %}
     <div class="empty-state">
-        <div class="empty-icon">📝</div>
+        <div class="empty-icon">Note</div>
         {% if query or selected_category %}
         <h3>No notes match your search</h3>
         <p>Try different keywords or <a href="{% url 'home' %}" style="color:var(--accent)">clear filters</a></p>
@@ -88,13 +84,11 @@
         {% endif %}
     </div>
     {% endif %}
-
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // Debounced search
     let searchTimer;
     function debounceSubmit() {
         clearTimeout(searchTimer);
@@ -103,16 +97,14 @@
         }, 500);
     }
 
-    // Add this Fix: Restore focus and cursor position after reload
     window.onload = function() {
         const searchInput = document.querySelector('.search-input');
         if (searchInput && searchInput.value.length > 0) {
             searchInput.focus();
-            // Move the cursor to the end of the text
             searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
         }
     };
-    // Toggle Pin via AJAX
+
     function togglePin(noteId, btn) {
         fetch(`/notes/${noteId}/pin/`, {
             method: 'POST',
